@@ -11,7 +11,7 @@ module.exports = withPlugins([
     withPWA,
     {
       pwa: {
-        disable: process.env.NODE_ENV === "production",
+        disable: process.env.NODE_ENV !== "production",
         register: true,
         scope: "/",
         dest: "public",
