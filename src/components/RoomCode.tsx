@@ -1,21 +1,37 @@
-import copyImg from '../assets/images/copy.svg'
-import '../styles/room-code.scss'
+import Image from "next/image";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import CopySVG from "../assets/images/copy.svg";
+import styles from "../assets/styles/components/RoomCode.module.scss";
 
-type RoomCodeProps = {
-  code: string;
-}
+export default function RoomCode() {
+  const [copied, setCopied] = useState(false);
 
-export function RoomCode(props: RoomCodeProps) {
-  function copyRoomCodeToClipboard() {
-    navigator.clipboard.writeText(props.code)
+  async function copyRoomCodeToClipboard() {
+    navigator.clipboard.writeText("thiagobatistadsilva87@gmail.com");
+    setCopied(true);
+
+    toast.success("Copiado para o clipboard!", {
+      style: {
+        background: "#97c4f8",
+        color: "#FFF"
+      },
+      iconTheme: {
+        primary: "#FFF",
+        secondary: "#a0cafa"
+      },
+      icon: "📎"
+    });
   }
 
-  return(
-    <button className="room-code" onClick={copyRoomCodeToClipboard}>
-      <div>
-        <img src={copyImg} alt="Copy room code" />
-      </div>
-      <span>Sala #{props.code}</span>
-    </button>
-  )
+  return (
+    <>
+      <button className={`${styles.roomCode} ${copied ? styles.copied : ""}`} onClick={copyRoomCodeToClipboard}>
+        <div>
+          <Image src={CopySVG} alt="Copiar código da sala" />
+        </div>
+        <span>PIX</span>
+      </button>
+    </>
+  );
 }
