@@ -227,7 +227,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   if(!firebaseRooms) {
     return {
       paths: [],
-      fallback: "blocking",
+      fallback: false,
     }
   }
 
