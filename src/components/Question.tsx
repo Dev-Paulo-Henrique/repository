@@ -95,7 +95,7 @@ export default function Question({
     return s.normalize('NFD')
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-        .replace(/[- ]+/g, " ");
+        .replace(/[- ]+/g, " ").replace('/', " - ");
       }
 
   async function handleHighlightQuestion(questionId: string) {

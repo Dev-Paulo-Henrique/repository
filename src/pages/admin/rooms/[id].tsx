@@ -24,41 +24,17 @@ export default function AdminRoom() {
   const router = useRouter();
   const { id: roomId }: RoomQueryParams = router.query;
   const { title, questions } = useRoom(roomId);
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   async function handleEndRoom() {
-//     await database.ref(`rooms/${roomId}`).update({
-//       closedAt: new Date(),
-//     });
-
-//     toast.success("Sala foi fechada!", {
-//       style: {
-//         background: "#68D391",
-//         color: "#FFF",
-//       },
-//       iconTheme: {
-//         primary: "#FFF",
-//         secondary: "#68D391",
-//       },
-//     });
-
-//     Router.push("/");
-//   }
+  console.log(title, questions)
 
   async function send(){
-    const roomRef = database.ref(`rooms/${roomId}`);
-    // const firebaseRoom = await roomRef.push({
-    //   title: 'Repertório',
-    //   authorId: user?.id,
-    // });
-
-    Router.push(`/rooms/${roomRef.key}`);
+    Router.push(`/rooms/-MxAVG-JyrLMdw1xfUZF`);
+    console.log(title, questions)
   }
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>Repertório</title>
       </Head>
 
       <header className={styles.header}>
@@ -69,13 +45,6 @@ export default function AdminRoom() {
             <Button type="button" disabled={!user} onClick={send}>
               Enviar sugestão
             </Button>
-            {/* <Button
-              type="button"
-              isOutlined
-              onClick={() => setIsModalOpen(true)}
-            >
-              Encerrar sala
-            </Button> */}
           </div>
         </div>
       </header>
@@ -106,84 +75,6 @@ export default function AdminRoom() {
           );
         })}
       </main>
-
-      {/* <>
-        <Modal
-          isOpen={isModalOpen}
-          ariaHideApp={false}
-          onRequestClose={() => setIsModalOpen(false)}
-          contentLabel="Deseja mesmo excluir o comentário?"
-          style={{
-            overlay: {
-              backgroundColor: "rgba(0, 0, 0, 0.75)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            },
-            content: {
-              position: "initial",
-              width: "37rem",
-              maxWidth: "90vw",
-              height: "23rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "0",
-              border: "none",
-              background: "transparent",
-            },
-          }}
-        >
-          <div className={styles.excludeModal}>
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M29.66 18.3398L18.34 29.6598"
-                stroke="#E73F5D"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M29.66 29.6598L18.34 18.3398"
-                stroke="#E73F5D"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M24 42V42C14.058 42 6 33.942 6 24V24C6 14.058 14.058 6 24 6V6C33.942 6 42 14.058 42 24V24C42 33.942 33.942 42 24 42Z"
-                stroke="#E73F5D"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-
-            <b>Encerrar a sala</b>
-
-            <p>Tem certeza que você encerrar sala?</p>
-
-            <div>
-              <button type="button" onClick={() => setIsModalOpen(false)}>
-                Cancelar
-              </button>
-              <button type="button" onClick={handleEndRoom}>
-                Sim, excluir
-              </button>
-            </div>
-          </div>
-        </Modal>
-      </> */}
     </>
   );
 }

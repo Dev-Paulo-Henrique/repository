@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import useRoom from "../../hooks/useRoom";
 import Question from "../../components/Question";
-import RoomCode from "../../components/RoomCode";
+// import RoomCode from "../../components/RoomCode";
 import Button from "../../components/Button";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/Room.module.scss";
@@ -214,7 +214,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      title: firebaseRoom.title,
+      title: 'Repertório',
     },
     revalidate: 30,
   };
@@ -227,7 +227,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   if(!firebaseRooms) {
     return {
       paths: [],
-      fallback: false,
+      fallback: "blocking",
     }
   }
 
@@ -247,6 +247,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
