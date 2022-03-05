@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
+    width: auto;
 
     img {
       max-height: 3rem;
@@ -21,7 +21,7 @@
     > div {
       display: flex;
       gap: 1rem;
-
+      
       > button {
         height: 2.5rem;
       }
@@ -114,6 +114,25 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
+
+    .select{
+      background: var(--purple);
+      width: auto;
+      height: 3.125rem;
+      text-align: center;
+      border-radius: 0.5rem;
+      color: #ffffff;
+      font: 400 0.875rem "Roboto", sans-serif;
+      border: none;
+      padding: 0 0.5rem;
+      outline: 0;
+      margin-right: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      // appearance: none;
+      // -webkit-appearance: none;
+      // -moz-appearance: none;
+  }
 
     span {
       font: 500 0.875rem "Roboto", sans-serif;

@@ -8,25 +8,40 @@ import toast from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 import useRoom from "../../hooks/useRoom";
 import Question from "../../components/Question";
-// import RoomCode from "../../components/RoomCode";
+import RoomCode from "../../components/RoomCode";
 import Button from "../../components/Button";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/Room.module.scss";
+import $ from "jquery";
 
 type RoomQueryParams = {
   id?: string;
 };
 
-export default function Room({ title }) {
+export default function Room() {
   const { user, signInWithGoogle } = useAuth();
   const router = useRouter();
   const { id: roomId }: RoomQueryParams = router.query;
-
   const [newQuestion, setNewQuestion] = useState("");
+  const [newState, setNewState] = useState("")
   const { questions } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault(); 
+
+    if(!newState){
+      toast.error("Campo deve ser selecionado!", {
+        style: {
+          background: "#F56565",
+          color: "#FFF",
+        },
+        iconTheme: {
+          primary: "#FFF",
+          secondary: "#F56565",
+        },
+      });
+      return;
+    }
 
     if (newQuestion.trim() === "") {
       toast.error("Campo deve ser preenchido!", {
@@ -55,7 +70,7 @@ export default function Room({ title }) {
       });
       return;
     }
-
+    
     const question = {
       content: newQuestion,
       author: {
@@ -64,10 +79,11 @@ export default function Room({ title }) {
       },
       isHighlighted: false,
       isAnswered: false,
+      type: newState
     };
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
-
+    
     toast.success("Sugestão enviada!", {
       style: {
         background: "#68D391",
@@ -79,7 +95,9 @@ export default function Room({ title }) {
       },
     });
 
+    // console.log($('#select').val())
     setNewQuestion("");
+    // setNewState("");
   }
 
   function colocarAcentos(s: string) {
@@ -109,24 +127,28 @@ export default function Room({ title }) {
   return (
     <>
       <Head>
-        <meta property="og:title" content={`Letmeask ${title ? title : ""}`} />
-        <meta
-          property="og:description"
-          content={`A sala ${title} está ao vivo e com tudo preparado para retirar suas dúvidas!`}
-        />
         <title>Enviar sugestão</title>
       </Head>
 
       <header className={styles.header}>
         <div>
           <Image src={logoSVG} alt="Letmeask" />
-          {/* <RoomCode /> */}
+          {/* <div className="table">
+              <span className="one">Adoração</span>
+              <span className="two">Celebração</span>
+              <span className="three">Extra</span>
+              <span className="four">Família</span>
+              <span className="five">Missões</span>
+              <span className="six">Santa ceia</span>
+          </div> */}
+          <RoomCode/>
         </div>
       </header>
 
       <main className={styles.main}>
         <div>
-          <h1>Repertório</h1>
+          <h1>Repertório
+          </h1>
           {questions.length > 0 && (
             <span>
               {questions.length}{" "}
@@ -166,7 +188,16 @@ export default function Room({ title }) {
                 .
               </span>
             )}
-            <Button type="submit" disabled={!user}>
+            <select className={styles.select} name="select" id="select">
+            <option value="Selecionar" disabled selected>Selecionar</option>
+            <option value="Adoração">Adoração</option>
+            <option value="Celebração">Celebração</option>
+            <option value="Extra">Extra</option>
+            <option value="Família">Família</option>
+            <option value="Missões">Missões</option>
+            <option value="Santa ceia">Santa ceia</option>
+            </select>
+            <Button type="submit" disabled={!user} onClick={() => setNewState($('#select').val())}>
               Enviar sugestão
             </Button>
           </div>
@@ -184,6 +215,7 @@ export default function Room({ title }) {
               roomId={roomId}
               isAnswered={question.isAnswered}
               isHighlighted={question.isHighlighted}
+              type={question.type}
             />
           );
         })}

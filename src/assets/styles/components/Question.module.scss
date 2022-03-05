@@ -5,18 +5,152 @@
   padding: 1.5rem;
   border: 1px solid transparent;
 
+  &.one{
+    background: #FF3877;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+  }
+  &.two{
+    background: #B51630;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+  }
+  &.three{
+    background: #FF3827;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+  }
+  &.four{
+    background: #30706F;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+    
+  }
+  &.five{
+    background: #13293D;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+  }
+  &.six{
+    background: #451531;
+    p {
+      color: #fff;
+    }
+    a{
+      span{
+        background: transparent;
+        border: 1px solid white;
+      }
+    }
+    footer{
+      div{
+        span{
+          color: white
+        }
+      }
+    }
+    svg{
+      fill: #fff;
+    }
+  }
+
   &.answered {
-    background: var(--white);
+    // background: var(--white);
     opacity: 0.4;
   }
 
   &.highlighted {
-    background: var(--box-background);
-    border: 1px solid var(--purple);
+    // background: var(--box-background);
+    border: 2px outset black;
 
-    .userInfo > span {
-      color: var(--black);
-    }
+    // .userInfo > span {
+    //   // color: var(--black);
+    // }
   }
 
   & + .question {

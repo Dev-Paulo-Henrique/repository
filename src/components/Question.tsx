@@ -19,6 +19,7 @@ type QuestionProps = {
   roomId: string;
   isAnswered?: boolean;
   isHighlighted?: boolean;
+  type: string;
 };
 
 export default function Question({
@@ -29,6 +30,7 @@ export default function Question({
   likeCount,
   isAdmin,
   roomId,
+  type,
   isAnswered = false,
   isHighlighted = false
 }: QuestionProps) {
@@ -115,9 +117,17 @@ export default function Question({
       icon: "📣"
     });
   }
+
   
   return (
-    <section className={`${styles.question} ${isAnswered ? styles.answered : ""} ${isHighlighted && !isAnswered ? styles.highlighted : ""}`}>
+    <section className={`${styles.question} ${isAnswered ? styles.answered : ""} ${isHighlighted && !isAnswered ? styles.highlighted : ""} 
+    ${type === 'Adoração' ? styles.one : ''}
+    ${type === 'Celebração' ? styles.two : ''}
+    ${type === 'Extra' ? styles.three : ''}
+    ${type === 'Família' ? styles.four : ''}
+    ${type === 'Missões' ? styles.five : ''}
+    ${type === 'Santa ceia' ? styles.six : ''}
+    `}>
       <a href={`https://www.cifraclub.com.br/${content}`}>
         <p>{removerAcentos(content)}
         </p>
@@ -128,7 +138,7 @@ export default function Question({
       <footer>
         <div className={styles.userInfo}>
           <Image src={author.avatar} alt={author.name} width="32" height="32" />
-          <span>{author.name}</span>
+          <span>{author.name} - {type}</span>
         </div>
         <div>
           {

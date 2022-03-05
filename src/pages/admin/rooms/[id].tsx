@@ -34,7 +34,7 @@ export default function AdminRoom() {
   return (
     <>
       <Head>
-        <title>Repertório</title>
+        <title>Administrador</title>
       </Head>
 
       <header className={styles.header}>
@@ -51,7 +51,7 @@ export default function AdminRoom() {
 
       <main className={styles.main}>
         <div>
-          <h1>{title}</h1>
+          <h1>Administrador</h1>
           {questions.length > 0 && (
             <span>
               {questions.length}{" "}
@@ -71,6 +71,7 @@ export default function AdminRoom() {
               roomId={roomId}
               isAnswered={question.isAnswered}
               isHighlighted={question.isHighlighted}
+              type={question.type}
             />
           );
         })}
