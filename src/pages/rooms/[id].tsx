@@ -1,4 +1,4 @@
-import { GetStaticProps, GetStaticPaths } from "next";
+// import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import useRoom from "../../hooks/useRoom";
 import Question from "../../components/Question";
 import RoomCode from "../../components/RoomCode";
-import { parseCookies } from "nookies";
+// import { parseCookies } from "nookies";
 import Button from "../../components/Button";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/Room.module.scss";
@@ -23,13 +23,11 @@ export default function Room() {
   const router = useRouter();
   const { id: roomId }: RoomQueryParams = router.query;
   const [newQuestion, setNewQuestion] = useState("");
-  const [newState, setNewState] = useState("")
+  // const [newState, setNewState] = useState("")
   const { questions } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault(); 
-
-    // getState
 
     if(!sessionStorage.getItem('new')){
       toast.error("Campo deve ser selecionado!", {

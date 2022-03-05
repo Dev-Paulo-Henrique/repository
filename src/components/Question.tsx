@@ -138,7 +138,7 @@ export default function Question({
       <footer>
         <div className={styles.userInfo}>
           <Image src={author.avatar} alt={author.name} width="32" height="32" />
-          <span>{author.name} - {type}</span>
+          <span>{author.name} {` - ${type}`}</span>
         </div>
         <div>
           {
