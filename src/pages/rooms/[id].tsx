@@ -197,7 +197,7 @@ export default function Room() {
             <option value="Missões">Missões</option>
             <option value="Santa ceia">Santa ceia</option>
             </select>
-            <Button type="submit" disabled={!user} onClick={() => setNewState}>
+            <Button type="submit" disabled={!user} onClick={() => setNewState($("select:selected").text()}>
               Enviar sugestão
             </Button>
           </div>
