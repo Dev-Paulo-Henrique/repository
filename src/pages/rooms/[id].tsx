@@ -9,11 +9,10 @@ import useAuth from "../../hooks/useAuth";
 import useRoom from "../../hooks/useRoom";
 import Question from "../../components/Question";
 import RoomCode from "../../components/RoomCode";
+import { parseCookies } from "nookies";
 import Button from "../../components/Button";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/Room.module.scss";
-import $ from "jquery";
-import { getState } from './getState'
 
 type RoomQueryParams = {
   id?: string;
@@ -192,7 +191,7 @@ export default function Room() {
                 .
               </span>
             )}
-            <select className={styles.select} name="select" id="select" onChange={getState}>
+            <select className={styles.select} name="select" id="select" onChange={(event) => sessionStorage.setItem('new', event.target.value)}>
             <option value="Selecionar" disabled selected>Selecionar</option>
             <option value="Adoração">Adoração</option>
             <option value="Celebração">Celebração</option>
@@ -201,7 +200,7 @@ export default function Room() {
             <option value="Missões">Missões</option>
             <option value="Santa ceia">Santa ceia</option>
             </select>
-            <Button type="submit" disabled={!user} onClick={() => setNewState}>
+            <Button type="submit" disabled={!user}>
               Enviar sugestão
             </Button>
           </div>
