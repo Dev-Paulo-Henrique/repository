@@ -1,4 +1,4 @@
-// import { GetStaticProps, GetStaticPaths } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
@@ -148,8 +148,7 @@ export default function Room() {
 
       <main className={styles.main}>
         <div>
-          <h1>Repertório
-          </h1>
+          <h1>Repertório</h1>
           {questions.length > 0 && (
             <span>
               {questions.length}{" "}
@@ -225,61 +224,61 @@ export default function Room() {
   );
 }
 
-// type FirebaseRooms = Record<
-//   string,
-//   {
-//     authorId: string;
-//     questions: {};
-//     title: string;
-//   }
-// >;
+type FirebaseRooms = Record<
+  string,
+  {
+    authorId: string;
+    questions: {};
+    title: string;
+  }
+>;
 
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const roomRef = await database.ref(`rooms/${params.id}`).get();
-//   const firebaseRoom: FirebaseRooms = roomRef?.val();
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const roomRef = await database.ref(`rooms/${params.id}`).get();
+  const firebaseRoom: FirebaseRooms = roomRef?.val();
 
-//   if(!firebaseRoom) {
-//     return {
-//       props: {},
-//       revalidade: 30,
-//     }
-//   }
+  if(!firebaseRoom) {
+    return {
+      props: {},
+      revalidade: 30,
+    }
+  }
 
-//   return {
-//     props: {
-//       title: 'Repertório',
-//     },
-//     revalidate: 30,
-//   };
-// };
+  return {
+    props: {
+      title: 'Repertório',
+    },
+    revalidate: 30,
+  };
+};
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   const roomRef = await database.ref(`rooms`).get();
-//   const firebaseRooms: FirebaseRooms[] = roomRef.val();
+export const getStaticPaths: GetStaticPaths = async () => {
+  const roomRef = await database.ref(`rooms`).get();
+  const firebaseRooms: FirebaseRooms[] = roomRef.val();
 
-//   if(!firebaseRooms) {
-//     return {
-//       paths: [],
-//       fallback: "blocking",
-//     }
-//   }
+  if(!firebaseRooms) {
+    return {
+      paths: [],
+      fallback: "blocking",
+    }
+  }
 
-//   const roomsProps = Object.entries(firebaseRooms).map(([key]) => {
-//     return {
-//       roomId: key,
-//     };
-//   });
+  const roomsProps = Object.entries(firebaseRooms).map(([key]) => {
+    return {
+      roomId: key,
+    };
+  });
 
-//   const paths = roomsProps.map((room) => {
-//     return {
-//       params: {
-//         id: room.roomId,
-//       },
-//     };
-//   });
+  const paths = roomsProps.map((room) => {
+    return {
+      params: {
+        id: room.roomId,
+      },
+    };
+  });
 
-//   return {
-//     paths: paths,
-//     fallback: "blocking",
-//   };
-// };
+  return {
+    paths: paths,
+    fallback: "blocking",
+  };
+};
