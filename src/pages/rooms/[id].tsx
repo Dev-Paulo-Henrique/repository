@@ -13,6 +13,7 @@ import Button from "../../components/Button";
 import logoSVG from "../../assets/images/logo.svg";
 import styles from "../../assets/styles/pages/Room.module.scss";
 import $ from "jquery";
+import { getState } from './getState'
 
 type RoomQueryParams = {
   id?: string;
@@ -29,7 +30,9 @@ export default function Room() {
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault(); 
 
-    if(!newState){
+    // getState
+
+    if(!sessionStorage.getItem('new')){
       toast.error("Campo deve ser selecionado!", {
         style: {
           background: "#F56565",
@@ -79,7 +82,7 @@ export default function Room() {
       },
       isHighlighted: false,
       isAnswered: false,
-      type: newState
+      type: sessionStorage.getItem('new')
     };
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
@@ -96,6 +99,7 @@ export default function Room() {
     });
 
     // console.log($('#select').val())
+    sessionStorage.removeItem('new')
     setNewQuestion("");
     // setNewState("");
   }
@@ -188,7 +192,7 @@ export default function Room() {
                 .
               </span>
             )}
-            <select className={styles.select} name="select" id="select">
+            <select className={styles.select} name="select" id="select" onChange={getState}>
             <option value="Selecionar" disabled selected>Selecionar</option>
             <option value="Adoração">Adoração</option>
             <option value="Celebração">Celebração</option>
@@ -197,7 +201,7 @@ export default function Room() {
             <option value="Missões">Missões</option>
             <option value="Santa ceia">Santa ceia</option>
             </select>
-            <Button type="submit" disabled={!user} onClick={() => setNewState($("select:selected").text()}>
+            <Button type="submit" disabled={!user} onClick={() => setNewState}>
               Enviar sugestão
             </Button>
           </div>
