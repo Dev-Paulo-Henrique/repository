@@ -132,7 +132,7 @@ export default function Question({
         <p>{removerAcentos(content)}
         </p>
       <span className="status">
-        { isAnswered ? 'Ouvida' : isHighlighted ? 'Visualizada' : 'Não visto'}
+        { isAnswered ? 'Tocado' : isHighlighted ? 'Estudado' : 'Não visto'}
         </span>
         </a>
       <footer>
