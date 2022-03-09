@@ -20,6 +20,7 @@ type QuestionProps = {
   isAnswered?: boolean;
   isHighlighted?: boolean;
   type: string;
+  link: string;
 };
 
 export default function Question({
@@ -29,6 +30,7 @@ export default function Question({
   likeId,
   likeCount,
   isAdmin,
+  link,
   roomId,
   type,
   isAnswered = false,
@@ -128,11 +130,11 @@ export default function Question({
     ${type === 'Missões' ? styles.five : ''}
     ${type === 'Santa ceia' ? styles.six : ''}
     `}>
-      <a href={`https://www.cifraclub.com.br/${content}`}>
+      <a>
         <p>{removerAcentos(content)}
         </p>
       <span className="status">
-        { isAnswered ? 'Tocado' : isHighlighted ? 'Estudado' : 'Não visto'}
+        { isAnswered ? 'Ministrado' : isHighlighted ? 'Estudado' : 'Não visto'}
         </span>
         </a>
       <footer>
@@ -143,29 +145,42 @@ export default function Question({
         <div>
           {
             !isAdmin ? (
+              <>
               <button
-                className={`${styles.likeButton} ${likeId ? styles.liked : ""}`}
-                type="button"
-                aria-label="Marcar como gostei"
-                onClick={() => handleLikeQuestion(id, likeId)}
+                // className={`${styles.likeButton} ${likeId ? styles.liked : ""}`}
+                // type="button"
+                // aria-label="Marcar como gostei"
+                // onClick={() => handleLikeQuestion(id, likeId)}
               >
-                {likeCount > 0 && <span>{likeCount}</span>}
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7 22H4C3.46957 22 2.96086 21.7893 2.58579 21.4142C2.21071 21.0391 2 20.5304 2 20V13C2 12.4696 2.21071 11.9609 2.58579 11.5858C2.96086 11.2107 3.46957 11 4 11H7M14 9V5C14 4.20435 13.6839 3.44129 13.1213 2.87868C12.5587 2.31607 11.7956 2 11 2L7 11V22H18.28C18.7623 22.0055 19.2304 21.8364 19.5979 21.524C19.9654 21.2116 20.2077 20.7769 20.28 20.3L21.66 11.3C21.7035 11.0134 21.6842 10.7207 21.6033 10.4423C21.5225 10.1638 21.3821 9.90629 21.1919 9.68751C21.0016 9.46873 20.7661 9.29393 20.5016 9.17522C20.2371 9.0565 19.9499 8.99672 19.66 9H14Z"
-                    stroke="#737380"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                {/* {likeCount > 0 && <span>{likeCount}</span>} */}
+                <a href={link}>
+                <svg 
+              stroke="currentColor" 
+              fill="currentColor" 
+              stroke-width="0" 
+              viewBox="0 0 576 512" 
+              height="24" 
+              width="24" 
+              xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+              d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+              >
+                </path>
+              </svg></a>
               </button>
+              <button
+                // className={`${styles.likeButton} ${likeId ? styles.liked : ""}`}
+                // type="button"
+                // aria-label="Marcar como gostei"
+                // onClick={() => handleLikeQuestion(id, likeId)}
+              >
+                {/* {likeCount > 0 && <span>{likeCount}</span>} */}
+                <a href={`https://www.cifraclub.com.br/${content}`}>
+                <img src="https://studiosol-a.akamaihd.net/cc/img/favicon.ico" alt="cifra" />
+                </a>
+              </button>
+              </>
             ) : (
               <>
                 {

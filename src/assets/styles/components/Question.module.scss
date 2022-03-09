@@ -166,6 +166,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img{
+    max-width: 24px;
+  }
   span{
     background: var(--purple);
     color: #fff;
@@ -204,6 +207,11 @@
         margin-left: 0.5rem;
         color: var(--gray-dark);
         font: 400 0.875rem "Roboto", sans-serif;
+
+        button > svg{
+          margin-left: 0.5rem;
+          margin-bottom: -0.5rem;
+        }
       }
     }
 

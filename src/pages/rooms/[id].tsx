@@ -23,7 +23,7 @@ export default function Room() {
   const router = useRouter();
   const { id: roomId }: RoomQueryParams = router.query;
   const [newQuestion, setNewQuestion] = useState("");
-  // const [newState, setNewState] = useState("")
+  const [newLink, setNewLink] = useState("")
   const { questions } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
@@ -79,7 +79,8 @@ export default function Room() {
       },
       isHighlighted: false,
       isAnswered: false,
-      type: sessionStorage.getItem('new')
+      type: sessionStorage.getItem('new'),
+      link: newLink
     };
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
@@ -98,7 +99,7 @@ export default function Room() {
     // console.log($('#select').val())
     sessionStorage.removeItem('new')
     setNewQuestion("");
-    // setNewState("");
+    setNewLink("");
   }
 
   function colocarAcentos(s: string) {
@@ -163,9 +164,20 @@ export default function Room() {
           className={styles.formAsk}
         >
           <textarea
+          disabled
             placeholder="Adicionar artista/louvor"
             value={newQuestion}
             onChange={(event) => setNewQuestion(colocarAcentos(event.target.value))}
+          />
+          <input type="url"
+          disabled
+          required
+            placeholder="https://www.youtube.com"
+            className="youtube"
+            value={newLink}
+            onChange={(event) => {setNewLink(event.target.value)}}
+            // value={newQuestion}
+            // onChange={(event) => setNewQuestion(colocarAcentos(event.target.value))}
           />
 
           <div>
@@ -188,7 +200,7 @@ export default function Room() {
                 .
               </span>
             )}
-            <select className={styles.select} name="select" id="select" onChange={(event) => sessionStorage.setItem('new', event.target.value)}>
+            <select disabled className={styles.select} name="select" id="select" onChange={(event) => sessionStorage.setItem('new', event.target.value)}>
             <option value="Selecionar" disabled selected>Selecionar</option>
             <option value="Adoração">Adoração</option>
             <option value="Celebração">Celebração</option>
@@ -216,6 +228,7 @@ export default function Room() {
               isAnswered={question.isAnswered}
               isHighlighted={question.isHighlighted}
               type={question.type}
+              link={question.link}
             />
           );
         })}

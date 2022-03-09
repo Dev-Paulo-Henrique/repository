@@ -107,6 +107,24 @@
     resize: vertical;
     min-height: 8rem;
     max-height: 16rem;
+    // cursor: not-allowed;
+
+    
+  }
+  > input{
+      width: 100%;
+      background: red;
+      height: 2rem;
+      border: 0;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background: var(--white);
+      box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.04);
+      resize: vertical;
+      min-height: 2rem;
+      max-height: 3rem;
+      // cursor: not-allowed;
+      margin-top: 1rem;
   }
 
   > div {
