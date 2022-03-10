@@ -94,7 +94,7 @@ export default function useRoom(roomId: string) {
       );
 
       const orderQuestionsByLikeCount = parsedQuestions.sort((roomA, roomB) =>
-        roomA.likeCount < roomB.likeCount ? 1 : roomA.likeCount > roomB.likeCount ? -1 : 0
+        roomA.type < roomB.type ? 1 : roomA.type > roomB.type ? -1 : 0
       );
 
       const orderQuestionByNotAnswer = orderQuestionsByLikeCount.sort((roomA, roomB) => 
