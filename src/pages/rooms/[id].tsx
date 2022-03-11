@@ -238,7 +238,7 @@ export default function Room() {
         </section>
         <section className={`${styles.question}`} onDoubleClick={() => {document.location.assign('https://www.cifraclub.com.br/louvor-iir/fogo-em-teus-olhos/')}}>
       <a>
-        <p>Sala de Adoração - Julliany</p>
+        <p>Sala de Adoração - Julliany(C#m)</p>
       <span className="status">19/03</span>
         </a>
         </section>
