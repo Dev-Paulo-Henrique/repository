@@ -242,6 +242,12 @@ export default function Room() {
       <span className="status">19/03</span>
         </a>
         </section>
+        <section className={`${styles.question}`} onDoubleClick={() => {document.location.assign('https://www.cifraclub.com.br/clamor-pelas-nacoes/tu-nao-desistiras/')}}>
+      <a>
+        <p>Sala de Adoração - Fhop(A)</p>
+      <span className="status">19/03</span>
+        </a>
+        </section>
 
         {questions.map((question) => {
           return (
