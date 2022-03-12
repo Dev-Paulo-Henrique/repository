@@ -179,7 +179,7 @@ export default function Question({
                 // onClick={() => handleLikeQuestion(id, likeId)}
               >
                 {/* {likeCount > 0 && <span>{likeCount}</span>} */}
-                <a href={`https://www.cifraclub.com.br/${content}`}>
+                <a href={`https://www.cifraclub.com.br/${content}`} target="_blank">
                 <img src="https://studiosol-a.akamaihd.net/cc/img/favicon.ico" alt="cifra" />
                 </a>
               </button>
