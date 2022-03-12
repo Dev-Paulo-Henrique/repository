@@ -73,6 +73,7 @@ export default function AdminRoom() {
               isHighlighted={question.isHighlighted}
               type={question.type}
               link={question.link}
+              tom={question.tom}
             />
           );
         })}

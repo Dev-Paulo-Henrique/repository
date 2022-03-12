@@ -24,12 +24,14 @@ export default function Room() {
   const { id: roomId }: RoomQueryParams = router.query;
   const [newQuestion, setNewQuestion] = useState("");
   const [newLink, setNewLink] = useState("")
+  const [newTom, setNewTom] = useState("")
+  const [newType, setNewType] = useState("")
   const { questions } = useRoom(roomId);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault(); 
 
-    if(!sessionStorage.getItem('new')){
+    if(!newType){
       toast.error("Campo deve ser selecionado!", {
         style: {
           background: "#F56565",
@@ -79,8 +81,9 @@ export default function Room() {
       },
       isHighlighted: false,
       isAnswered: false,
-      type: sessionStorage.getItem('new'),
-      link: newLink
+      type: newType,
+      link: newLink,
+      tom: newTom
     };
 
     await database.ref(`rooms/${roomId}/questions`).push(question);
@@ -100,6 +103,8 @@ export default function Room() {
     sessionStorage.removeItem('new')
     setNewQuestion("");
     setNewLink("");
+    setNewTom("")
+    setNewType("")
   }
 
   function colocarAcentos(s: string) {
@@ -125,6 +130,8 @@ export default function Room() {
       },
     });
   }
+
+  const date = new Date().getUTCDate()
 
   return (
     <>
@@ -164,21 +171,45 @@ export default function Room() {
           className={styles.formAsk}
         >
           <textarea
-          disabled
+          disabled={date === 10 ? false : true}
             placeholder="Adicionar artista/louvor"
             value={newQuestion}
             onChange={(event) => setNewQuestion(colocarAcentos(event.target.value))}
           />
           <input type="url"
-          disabled
-          required
+          disabled={date === 10 ? false : true}
             placeholder="https://www.youtube.com"
             className="youtube"
             value={newLink}
             onChange={(event) => {setNewLink(event.target.value)}}
-            // value={newQuestion}
-            // onChange={(event) => setNewQuestion(colocarAcentos(event.target.value))}
           />
+          <select disabled={date === 10 ? false : true} className={styles.select} name="select" id="select" onChange={(event) => setNewTom(event.target.value)}>
+            <option value="Selecionar" disabled selected>Tom original</option>
+            <option value="A">A</option>
+            <option value="Am">Am</option>
+            <option value="Bb">Bb</option>
+            <option value="Bbm">Bbm</option>
+            <option value="B">B</option>
+            <option value="Bm">Bm</option>
+            <option value="C">C</option>
+            <option value="Cm">Cm</option>
+            <option value="C#">C#</option>
+            <option value="C#m">C#m</option>
+            <option value="D">D</option>
+            <option value="Dm">Dm</option>
+            <option value="Eb">Eb</option>
+            <option value="Ebm">Ebm</option>
+            <option value="E">E</option>
+            <option value="Em">Em</option>
+            <option value="F">F</option>
+            <option value="Fm">Fm</option>
+            <option value="F#">F#</option>
+            <option value="F#m">F#m</option>
+            <option value="G">G</option>
+            <option value="Gm">Gm</option>
+            <option value="Ab">Ab</option>
+            <option value="Abm">Abm</option>
+            </select>
 
           <div>
             {user ? (
@@ -200,7 +231,7 @@ export default function Room() {
                 .
               </span>
             )}
-            <select disabled className={styles.select} name="select" id="select" onChange={(event) => sessionStorage.setItem('new', event.target.value)}>
+            <select disabled={date === 10 ? false : true} className={styles.select} name="select" id="select" onChange={(event) => setNewType(event.target.value)}>
             <option value="Selecionar" disabled selected>Selecionar</option>
             <option value="Adoração">Adoração</option>
             <option value="Celebração">Celebração</option>
@@ -271,6 +302,7 @@ export default function Room() {
               isHighlighted={question.isHighlighted}
               type={question.type}
               link={question.link}
+              tom={question.tom}
             />
           );
         })}

@@ -16,7 +16,8 @@ type QuestionType = {
   likeCount: number;
   likeId: string | undefined;
   type: string;
-  link: string
+  link: string;
+  tom: string;
 };
 
 type FirebaseQuestions = Record<
@@ -31,6 +32,7 @@ type FirebaseQuestions = Record<
     isHighlighted: boolean;
     type: string;
     link: string;
+    tom: string;
     likes: Record<
       string,
       {
@@ -85,6 +87,7 @@ export default function useRoom(roomId: string) {
             isAnswered: value.isAnswered,
             type: value.type,
             link: value.link,
+            tom: value.tom,
             likeCount: Object.values(value.likes ?? {}).length,
             likeId: Object.entries(value.likes ?? {}).find(
               ([key, like]) => like.authorId === user?.id
@@ -94,7 +97,7 @@ export default function useRoom(roomId: string) {
       );
 
       const orderQuestionsByLikeCount = parsedQuestions.sort((roomA, roomB) =>
-        roomA.type < roomB.type ? 1 : roomA.type > roomB.type ? -1 : 0
+        roomA.type < roomB.type ? -1 : roomA.type > roomB.type ? 1 : 0
       );
 
       const orderQuestionByNotAnswer = orderQuestionsByLikeCount.sort((roomA, roomB) => 
