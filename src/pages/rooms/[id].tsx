@@ -246,48 +246,6 @@ export default function Room() {
           </div>
         </form>
 
-        <section className={`${styles.question}`} onDoubleClick={() => {document.location.assign('https://www.cifraclub.com.br/izaac-santos/vou-deixar-queimar-aumenta-o-fogo/')}}>
-      <a>
-        <p>Sala de Adoração - Izaac</p>
-      <span className="status">19/03</span>
-        </a>
-        </section>
-        <section className={`${styles.question}`}>
-      <a>
-        <p>Sala de Adoração - Medley(D/Bm)</p>
-      <span className="status">19/03</span>
-        </a>
-      <footer>
-        <div className={styles.userInfo}>
-          <span>
-          </span>
-            <a href="https://www.cifraclub.com.br/theo-rubia/pode-morar-aqui/" target="_blank">Theo</a>
-            <a href="https://www.cifraclub.com.br/isaias-saad/ruja-o-leao-que-se-abram-os-ceus-part-nivea-soares/" target="_blank">Isaías</a>
-            <a href="https://www.cifraclub.com.br/fernandinho/yeshua/" target="_blank">Fernandinho</a>
-        </div>
-        </footer>
-        </section>
-        <section className={`${styles.question}`} onDoubleClick={() => {document.location.assign('https://www.cifraclub.com.br/louvor-iir/fogo-em-teus-olhos/')}}>
-      <a>
-        <p>Sala de Adoração - Julliany</p>
-      <span className="status">19/03</span>
-        </a>
-        </section>
-        <section className={`${styles.question}`}>
-      <a>
-        <p>Sala de Adoração - Fhop</p>
-      <span className="status">19/03</span>
-        </a>
-      <footer>
-        <div className={styles.userInfo}>
-          <span>
-          </span>
-            <a href="https://www.cifraclub.com.br/clamor-pelas-nacoes/tu-nao-desistiras/" target="_blank">Tu não desistirás(A)</a>
-            <a href="https://www.cifraclub.com.br/ministerio-nova-geracao/fogo-que-consome/" target="_blank">Fogo que consome(E)</a>
-        </div>
-        </footer>
-        </section>
-
         {questions.map((question) => {
           return (
             <Question
