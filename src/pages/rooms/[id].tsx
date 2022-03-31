@@ -131,8 +131,6 @@ export default function Room() {
     });
   }
 
-  const date = new Date().getUTCDate()
-
   return (
     <>
       <Head>
@@ -171,19 +169,17 @@ export default function Room() {
           className={styles.formAsk}
         >
           <textarea
-          disabled={date === 10 ? false : true}
             placeholder="Adicionar artista/louvor"
             value={newQuestion}
             onChange={(event) => setNewQuestion(colocarAcentos(event.target.value))}
           />
           <input type="url"
-          disabled={date === 10 ? false : true}
             placeholder="https://www.youtube.com"
             className="youtube"
             value={newLink}
             onChange={(event) => {setNewLink(event.target.value)}}
           />
-          <select disabled={date === 10 ? false : true} className={styles.select} name="select" id="select" onChange={(event) => setNewTom(event.target.value)}>
+          <select className={styles.select} name="select" id="select" onChange={(event) => setNewTom(event.target.value)}>
             <option value="Selecionar" disabled selected>Tom original</option>
             <option value="A">A</option>
             <option value="Am">Am</option>
@@ -231,7 +227,7 @@ export default function Room() {
                 .
               </span>
             )}
-            <select disabled={date === 10 ? false : true} className={styles.select} name="select" id="select" onChange={(event) => setNewType(event.target.value)}>
+            <select className={styles.select} name="select" id="select" onChange={(event) => setNewType(event.target.value)}>
             <option value="Selecionar" disabled selected>Selecionar</option>
             <option value="Adoração">Adoração</option>
             <option value="Celebração">Celebração</option>
