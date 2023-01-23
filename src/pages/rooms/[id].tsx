@@ -131,7 +131,7 @@ export default function Room() {
     });
   }
 
-  if(window.location.search !== "?list"){
+  
   return (
     <>
       <Head>
@@ -264,7 +264,6 @@ export default function Room() {
       </main>
     </>
   );
-  }
 }
 
 type FirebaseRooms = Record<
