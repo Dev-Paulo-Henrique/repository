@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     <AuthProvider>
       <Component {...pageProps} />
       <Toaster position="top-right" />
-      {router.pathname !== "rooms/app/-MxAVG-JyrLMdw1xfUZF" && <DarkModeSwitch />}
+      {router.asPath !== "/rooms/app/-MxAVG-JyrLMdw1xfUZF" && <DarkModeSwitch />}
     </AuthProvider>
   );
 }
