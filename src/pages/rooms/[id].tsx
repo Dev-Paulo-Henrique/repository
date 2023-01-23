@@ -131,7 +131,7 @@ export default function Room() {
     });
   }
 
-  if(window.location.search == "?list"){
+  if(window.location.search !== "?list"){
   return (
     <>
       <Head>
