@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
     <AuthProvider>
       <Component {...pageProps} />
       <Toaster position="top-right" />
-      {router.pathname !== "/rooms/app/-MxAVG-JyrLMdw1xfUZF" && <DarkModeSwitch />}
+      {router.href !== "https://repository-neon.vercel.app/rooms/app/-MxAVG-JyrLMdw1xfUZF" && <DarkModeSwitch />}
     </AuthProvider>
   );
 }
