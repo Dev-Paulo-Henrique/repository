@@ -131,9 +131,8 @@ export default function Room() {
     });
   }
   
-  if(window.location.search == "?list"){
+  if(window.location.search === "?list"){
     return (
-    <>
       <main className={styles.main}>
         <div>
           <h1>Repertório</h1>
@@ -163,7 +162,6 @@ export default function Room() {
           );
         })}
       </main>
-    </>
     )
   }
 
