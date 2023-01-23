@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../contexts/AuthContext";
 import DarkModeSwitch from "../components/DarkModeSwitch";
-import Router from 'next/router';
+import { useRouter } from 'next/router'
 
 import "../assets/styles/global.scss";
 
