@@ -7,6 +7,7 @@ import "../assets/styles/global.scss";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
+  console.log(router, router.pathname)
   return (
     <AuthProvider>
       <Component {...pageProps} />
