@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <AuthProvider>
       <Component {...pageProps} />
       <Toaster position="top-right" />
-      <DarkModeSwitch />
+      {window.location.href !== "https://repository-neon.vercel.app/rooms/app/-MxAVG-JyrLMdw1xfUZF" && <DarkModeSwitch />}
     </AuthProvider>
   );
 }
