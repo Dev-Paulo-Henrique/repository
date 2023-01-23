@@ -130,6 +130,42 @@ export default function Room() {
       },
     });
   }
+  
+  if(window.location.search == "?list"){
+    return (
+    <>
+      <main className={styles.main}>
+        <div>
+          <h1>Repertório</h1>
+          {questions.length > 0 && (
+            <span>
+              {questions.length}{" "}
+              {questions.length > 1 ? "sugestões" : "sugestão"}
+            </span>
+          )}
+        </div>
+        {questions.map((question) => {
+          return (
+            <Question
+              key={question.id}
+              content={question.content}
+              author={question.author}
+              likeId={question.likeId}
+              likeCount={question.likeCount}
+              id={question.id}
+              roomId={roomId}
+              isAnswered={question.isAnswered}
+              isHighlighted={question.isHighlighted}
+              type={question.type}
+              link={question.link}
+              tom={question.tom}
+            />
+          );
+        })}
+      </main>
+    </>
+    )
+  }
 
   
   return (
