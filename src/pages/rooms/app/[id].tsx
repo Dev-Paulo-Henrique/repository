@@ -137,7 +137,7 @@ export default function Room() {
         <div>
           <h1>Repertório</h1>
           {questions.length > 0 && (
-            <span style="background-color:#f70;">
+            <span style="background-color:'#f70';">
               {questions.length}{" "}
               {questions.length > 1 ? "sugestões" : "sugestão"}
             </span>
