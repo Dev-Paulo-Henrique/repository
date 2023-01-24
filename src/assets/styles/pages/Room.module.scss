@@ -89,6 +89,19 @@
         margin-left: 0;
       }
     }
+    
+     > .appSpan {
+      margin-left: 1rem;
+      background: "#f70";
+      border-radius: 100vw;
+      padding: 0.5rem 1rem;
+      color: var(--white);
+      font: 500 0.875rem "Roboto", sans-serif;
+
+      @media(max-width: 520px) {
+        margin-left: 0;
+      }
+    }
   }
 
   > section {
